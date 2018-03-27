@@ -1,0 +1,3 @@
+{% for username in ssmtp.usernames %}
+{{ username }}:{{ ssmtp.root }}:{{ ssmtp.mailhub }}
+{% endfor %}

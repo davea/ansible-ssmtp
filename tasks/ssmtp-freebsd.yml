@@ -1,0 +1,37 @@
+- name: Install ssmtp
+  pkgng: name={{ item }} state=present
+  with_items:
+    - ssmtp
+
+- name: Install ssmtp.conf template
+  template:
+    src: ssmtp.conf.j2
+    dest: /usr/local/etc/ssmtp/ssmtp.conf
+    mode: 0640
+    owner: root
+    group: ssmtp
+
+- name: Install revaliases template
+  template:
+    src: revaliases.j2
+    dest: /usr/local/etc/ssmtp/revaliases
+    mode: 0640
+    owner: root
+    group: ssmtp
+
+- name: Enable ssmtp service
+  lineinfile:
+    dest: /etc/mail/mailer.conf
+    regexp: "{{ item.regex }}"
+    line: "{{ item.name }}  /usr/local/sbin/ssmtp"
+  with_items:
+    - regex: ^sendmail
+      name: sendmail
+    - regex: ^send-mail
+      name: send-mail
+
+- name: Configure local aliases
+  lineinfile:
+    dest: /etc/mail.rc
+    line: "alias {{ item }} {{ item }}<{{ ssmtp.root }}>"
+  with_items: "{{ ssmtp.usernames }}"

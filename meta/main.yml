@@ -1,0 +1,12 @@
+galaxy_info:
+  author: Dave Arter
+  description: Installs SSMTP on FreeBSD or Raspbian.
+  license: MIT
+
+  platforms:
+    - name: Debian
+      versions:
+        - stretch
+    - name: FreeBSD
+
+dependencies: []

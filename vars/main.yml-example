@@ -1,0 +1,10 @@
+ssmtp:
+  root: user@gmail.com
+  mailhub: smtp.gmail.com:587
+  AuthUser: user@gmail.com
+  AuthPass: mypassword
+  rewriteDomain: ""
+  hostname: myhost
+
+  usernames:
+    - root
