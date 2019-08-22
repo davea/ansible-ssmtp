@@ -1,7 +1,5 @@
 - name: Install ssmtp
-  apt: name={{ item }} state=present
-  with_items:
-    - ssmtp
+  apt: name=ssmtp state=present
 
 - name: Install ssmtp.conf template
   template:

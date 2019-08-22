@@ -1,3 +1,9 @@
 {% for username in ssmtp.usernames %}
 {{ username }}:{{ ssmtp.root }}:{{ ssmtp.mailhub }}
 {% endfor %}
+
+{% if ssmtp_extra_usernames is defined %}
+{% for username in ssmtp_extra_usernames %}
+{{ username }}:{{ ssmtp.root }}:{{ ssmtp.mailhub }}
+{% endfor %}
+{% endif %}

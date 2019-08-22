@@ -1,7 +1,5 @@
 - name: Install ssmtp
-  pkgng: name={{ item }} state=present
-  with_items:
-    - ssmtp
+  pkgng: name=ssmtp state=present
 
 - name: Install ssmtp.conf template
   template:
@@ -35,3 +33,10 @@
     dest: /etc/mail.rc
     line: "alias {{ item }} {{ item }}<{{ ssmtp.root }}>"
   with_items: "{{ ssmtp.usernames }}"
+
+- name: Configure local aliases
+  lineinfile:
+    dest: /etc/mail.rc
+    line: "alias {{ item }} {{ item }}<{{ ssmtp.root }}>"
+  with_items: "{{ ssmtp_extra_usernames }}"
+  when: ssmtp_extra_usernames is defined
