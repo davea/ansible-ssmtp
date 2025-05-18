@@ -2,6 +2,6 @@
   when: "'freebsd' in group_names"
   tags: ssmtp
 
-- import_tasks: ssmtp-raspbian.yml
-  when: "'raspbian' in group_names"
+- import_tasks: ssmtp-linux.yml
+  when: "'apt' in group_names"
   tags: ssmtp

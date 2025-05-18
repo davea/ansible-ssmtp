@@ -1,7 +1,7 @@
 ssmtp
 =====
 
-This role installs SSMTP on a Rasbpian or FreeBSD host.
+This role installs SSMTP on a FreeBSD or (apt-based) Linux host.
 
 Licence
 =======

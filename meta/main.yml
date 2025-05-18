@@ -1,6 +1,6 @@
 galaxy_info:
   author: Dave Arter
-  description: Installs SSMTP on FreeBSD or Raspbian.
+  description: Installs SSMTP on FreeBSD or (apt-based) Linux.
   license: MIT
 
   platforms:
